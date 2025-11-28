@@ -2,6 +2,11 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH
+  ? `/${process.env.NEXT_PUBLIC_BASE_PATH.replace(/^\/|\/$/g, '')}`
+  : '';
+const withBasePath = (path: string) => `${basePath}${path}`;
+
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -17,11 +22,14 @@ export const metadata: Metadata = {
   description: 'IncognitoVerse coming soon',
   icons: {
     icon: [
-      { url: '/favicon-dark.png', media: '(prefers-color-scheme: light)' },
-      { url: '/favicon.ico', media: '(prefers-color-scheme: dark)' },
+      {
+        url: withBasePath('/favicon-dark.png'),
+        media: '(prefers-color-scheme: light)',
+      },
+      { url: withBasePath('/favicon.ico'), media: '(prefers-color-scheme: dark)' },
     ],
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico',
+    shortcut: withBasePath('/favicon.ico'),
+    apple: withBasePath('/favicon.ico'),
   },
 };
 
