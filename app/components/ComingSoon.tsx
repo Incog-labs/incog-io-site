@@ -26,6 +26,11 @@ type FireworkBurst = {
   particles: FireworkParticle[];
 };
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH
+  ? `/${process.env.NEXT_PUBLIC_BASE_PATH.replace(/^\/|\/$/g, '')}`
+  : '';
+const withBasePath = (path: string) => `${basePath}${path}`;
+
 const pseudoRandom = (seed: number) => {
   const x = Math.sin(seed) * 10000;
   return x - Math.floor(x);
@@ -105,7 +110,7 @@ export function ComingSoon() {
     <div className='relative min-h-screen bg-black text-white flex flex-col'>
       <audio
         ref={audioRef}
-        src='/audio/fantasia.mp3'
+        src={withBasePath('/audio/fantasia.mp3')}
         preload='auto'
         className='hidden'
       />
