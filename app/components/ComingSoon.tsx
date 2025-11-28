@@ -50,9 +50,7 @@ const createParticles = (count = 2500): Particle[] =>
 export function ComingSoon() {
   const particles = useMemo(() => createParticles(), []);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [audioStatus, setAudioStatus] = useState<'playing' | 'muted'>(
-    'muted'
-  );
+  const [audioStatus, setAudioStatus] = useState<'playing' | 'muted'>('muted');
   const [fireworks, setFireworks] = useState<FireworkBurst[]>([]);
 
   useEffect(() => {
@@ -142,7 +140,7 @@ export function ComingSoon() {
             href='/terms'
             className='text-white hover:text-gray-300 transition-colors duration-200'
           >
-            Terms of Service
+            Terms
           </Link>
           <span className='hidden sm:inline text-gray-700 text-sm'>•</span>
           <Link
@@ -169,12 +167,14 @@ export function ComingSoon() {
                 <span
                   key={p.id}
                   className='firework-particle'
-                  style={{
-                    '--dx': `${p.dx}px`,
-                    '--dy': `${p.dy}px`,
-                    animationDelay: `${p.delay}ms`,
-                    backgroundColor: p.color,
-                  } as CSSProperties}
+                  style={
+                    {
+                      '--dx': `${p.dx}px`,
+                      '--dy': `${p.dy}px`,
+                      animationDelay: `${p.delay}ms`,
+                      backgroundColor: p.color,
+                    } as CSSProperties
+                  }
                 />
               ))
             )}
