@@ -137,14 +137,14 @@ export function ComingSoon() {
       <footer className='relative z-10 w-full py-6'>
         <div className='mx-auto flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8 px-4 text-sm'>
           <Link
-            href='/terms'
+            href='/incognitoverse/terms'
             className='text-white hover:text-gray-300 transition-colors duration-200'
           >
             Terms
           </Link>
           <span className='hidden sm:inline text-gray-700 text-sm'>•</span>
           <Link
-            href='/privacy'
+            href='/incognitoverse/privacy'
             className='text-white hover:text-gray-300 transition-colors duration-200'
           >
             Privacy Policy
